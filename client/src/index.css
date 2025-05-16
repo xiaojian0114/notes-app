@@ -1,0 +1,247 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-color: #1677ff;
+  --primary-hover-color: rgba(22, 119, 255, 0.8);
+}
+
+.ant-btn-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.ant-btn-primary:hover {
+  background-color: var(--primary-hover-color) !important;
+}
+
+/* 笔记卡片按钮样式 */
+.ant-card .ant-btn {
+  border-radius: 8px !important;
+  margin-right: 8px !important;
+}
+
+.ant-card .ant-btn:last-child {
+  margin-right: 0 !important;
+}
+
+.navbar {
+  background-color: var(--primary-color);
+}
+
+.nav-menu a:hover {
+  color: var(--primary-hover-color);
+}
+
+/* 通用按钮样式 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 15px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  height: 32px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+/* 主要按钮 */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover-color);
+  border-color: var(--primary-hover-color);
+}
+
+/* 次要按钮 */
+.btn-secondary {
+  background-color: #fff;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+  color: var(--primary-hover-color);
+  border-color: var(--primary-hover-color);
+}
+
+/* 文本按钮 */
+.btn-text {
+  background-color: transparent;
+  color: var(--primary-color);
+}
+
+.btn-text:hover {
+  color: var(--primary-hover-color);
+  background-color: rgba(22, 119, 255, 0.1);
+}
+
+/* 危险按钮 */
+.btn-danger {
+  background-color: #ff4d4f;
+  color: #fff;
+  border-color: #ff4d4f;
+}
+
+.btn-danger:hover {
+  background-color: rgba(255, 77, 79, 0.8);
+  border-color: rgba(255, 77, 79, 0.8);
+}
+
+/* 禁用状态 */
+.btn[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* 按钮尺寸 */
+.btn-small {
+  padding: 0 7px;
+  height: 24px;
+  font-size: 12px;
+}
+
+.btn-large {
+  padding: 6px 20px;
+  height: 40px;
+  font-size: 16px;
+}
+
+/* 标签样式统一 */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  line-height: 20px;
+  background: linear-gradient(120deg, #03d350 0%, #8cc62f 100%);
+  color: #fff;
+  margin: 0 4px 4px 0;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 可关闭的标签 */
+.tag-closable {
+  padding-right: 4px;
+  cursor: pointer;
+}
+
+.tag-closable .close-icon {
+  margin-left: 4px;
+  font-size: 10px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.tag-closable:hover .close-icon {
+  opacity: 1;
+}
+
+/* 不同类型的标签 */
+.tag-primary {
+  background: linear-gradient(
+    120deg,
+    var(--primary-color) 0%,
+    var(--primary-hover-color) 100%
+  );
+}
+
+.tag-success {
+  background: linear-gradient(120deg, #52c41a 0%, #73d13d 100%);
+}
+
+.tag-warning {
+  background: linear-gradient(120deg, #faad14 0%, #ffc53d 100%);
+}
+
+.tag-error {
+  background: linear-gradient(120deg, #ff4d4f 0%, #ff7875 100%);
+}
+
+/* 标签尺寸 */
+.tag-small {
+  padding: 0 6px;
+  font-size: 10px;
+  line-height: 16px;
+}
+.tag-large {
+  padding: 4px 12px;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+/* 笔记卡片样式 */
+.note-card {
+  margin: 10px;
+  transition: all 0.3s;
+}
+
+.note-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 轮播图样式 */
+.note-carousel .slick-dots li button {
+  background: var(--primary-color);
+}
+
+.note-carousel .slick-dots li.slick-active button {
+  background: var(--primary-color);
+}
+
+.note-carousel .slick-slide {
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.note-carousel .slick-current {
+  opacity: 1;
+}
+
+.note-carousel .slick-slide > div {
+  margin: 0 10px;
+}
+.tag-large {
+  padding: 4px 12px;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+/* 修改标签样式，增加选择器优先级 */
+.ant-tag.ant-tag-cyan {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px !important;
+  border-radius: 12px !important;
+  font-size: 12px !important;
+  line-height: 20px !important;
+  background: linear-gradient(120deg, #03d350 0%, #8cc62f 100%) !important;
+  color: #fff !important;
+  margin: 0 4px 4px 0 !important;
+  transition: all 0.3s ease !important;
+  cursor: default !important;
+  border: none !important;
+}
+
+.ant-tag.ant-tag-cyan:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+  color: #fff !important;
+}
+
