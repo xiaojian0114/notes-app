@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Avatar, Button, Descriptions, List, Tag, Popconfirm } from 'antd';
+import {
+  Card,
+  Avatar,
+  Button,
+  Descriptions,
+  List,
+  Tag,
+  Popconfirm,
+} from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import { useStore } from '@/store/userStore';
 import { useNavigate } from 'react-router-dom';
@@ -26,8 +34,8 @@ const Profile = () => {
   }, []);
 
   const handleDeleteReminder = (reminderToDelete) => {
-    const updatedReminders = reminders.filter(reminder => 
-      reminder.datetime !== reminderToDelete.datetime
+    const updatedReminders = reminders.filter(
+      (reminder) => reminder.datetime !== reminderToDelete.datetime,
     );
     setReminders(updatedReminders);
     localStorage.setItem('reminders', JSON.stringify(updatedReminders));
@@ -38,11 +46,11 @@ const Profile = () => {
     <>
       <Navbar1 />
       <div className="p-6 flex gap-6">
-        <div className="w-1/3">
+        <div className="w-3/10">
           <Card title="提醒事项" className="mb-4">
             <List
               dataSource={reminders}
-              renderItem={item => (
+              renderItem={(item) => (
                 <List.Item
                   actions={[
                     <Popconfirm
@@ -52,14 +60,10 @@ const Profile = () => {
                       okText="确定"
                       cancelText="取消"
                     >
-                      <Button 
-                        type="text" 
-                        danger 
-                        icon={<DeleteOutlined />}
-                      >
+                      <Button type="text" danger icon={<DeleteOutlined />}>
                         删除
                       </Button>
-                    </Popconfirm>
+                    </Popconfirm>,
                   ]}
                 >
                   <div className="w-full">
@@ -80,7 +84,7 @@ const Profile = () => {
             />
           </Card>
         </div>
-        <div className="w-2/3">
+        <div className="w-7/10">
           <Card className="max-w-2xl mx-auto">
             <div className="flex flex-col items-center gap-4">
               <Avatar
@@ -97,7 +101,9 @@ const Profile = () => {
                 <Descriptions.Item label="用户名">
                   {user?.username}
                 </Descriptions.Item>
-                <Descriptions.Item label="邮箱">{user?.email}</Descriptions.Item>
+                <Descriptions.Item label="邮箱">
+                  {user?.email}
+                </Descriptions.Item>
               </Descriptions>
               <Button
                 type="primary"
