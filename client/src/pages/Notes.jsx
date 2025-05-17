@@ -1,5 +1,15 @@
 import { useEffect, useState } from 'react';
-import { List, Card, Tag, Button, Modal, message, Upload, DatePicker, Select } from 'antd';
+import {
+  List,
+  Card,
+  Tag,
+  Button,
+  Modal,
+  message,
+  Upload,
+  DatePicker,
+  Select,
+} from 'antd';
 import { getNotes, deleteNote, createNote } from '@/api/noteApi';
 import { useStore } from '@/store/userStore';
 import { useNavigate } from 'react-router-dom';
@@ -24,7 +34,7 @@ const Notes = () => {
     datetime: null,
     type: 'once',
     description: '',
-    noteId: null
+    noteId: null,
   });
 
   useEffect(() => {
@@ -54,14 +64,14 @@ const Notes = () => {
   useEffect(() => {
     const checkReminders = () => {
       const now = new Date();
-      reminders.forEach(reminder => {
+      reminders.forEach((reminder) => {
         const reminderTime = new Date(reminder.datetime);
         if (!reminder.notified && reminderTime <= now) {
           message.info(`提醒：${reminder.title} - ${reminder.description}`);
-          setReminders(prev =>
-            prev.map(r =>
-              r.datetime === reminder.datetime ? { ...r, notified: true } : r
-            )
+          setReminders((prev) =>
+            prev.map((r) =>
+              r.datetime === reminder.datetime ? { ...r, notified: true } : r,
+            ),
           );
         }
       });
@@ -77,33 +87,30 @@ const Notes = () => {
       try {
         const content = e.target.result;
         const noteData = JSON.parse(content);
-        
-        // 确保导入的数据包含必要字段
+
         if (!noteData.title || !noteData.content) {
           message.error('导入的文件格式不正确');
           return;
         }
 
-        // 准备笔记数据
         const newNote = {
           title: noteData.title,
           content: noteData.content,
           tags: noteData.tags || [],
-          categoryId: noteData.categoryId || 1, // 默认分类
-          userId: user.id
+          categoryId: noteData.categoryId || 1,
+          userId: user.id,
         };
 
-        // 调用创建笔记API
         await createNote(newNote);
         message.success('笔记导入成功');
-        fetchNotes(); // 刷新笔记列表
+        fetchNotes();
       } catch (error) {
         console.error('导入笔记失败:', error);
         message.error('导入笔记失败');
       }
     };
     reader.readAsText(file);
-    return false; // 阻止自动上传
+    return false;
   };
 
   const handleAddReminder = () => {
@@ -117,10 +124,10 @@ const Notes = () => {
       title: selectedNote.title,
       description: `笔记提醒: ${selectedNote.title}`,
       noteId: selectedNote.id,
-      notified: false
+      notified: false,
     };
 
-    setReminders(prev => [...prev, reminderData]);
+    setReminders((prev) => [...prev, reminderData]);
     setReminderModalVisible(false);
     setSelectedNote(null);
     setNewReminder({
@@ -128,7 +135,7 @@ const Notes = () => {
       datetime: null,
       type: 'once',
       description: '',
-      noteId: null
+      noteId: null,
     });
     message.success('提醒设置成功');
   };
@@ -245,12 +252,14 @@ const Notes = () => {
             <Select
               style={{ width: '100%' }}
               value={newReminder.type}
-              onChange={(value) => setNewReminder(prev => ({ ...prev, type: value }))}
+              onChange={(value) =>
+                setNewReminder((prev) => ({ ...prev, type: value }))
+              }
               options={[
                 { value: 'once', label: '一次性提醒' },
                 { value: 'daily', label: '每日提醒' },
                 { value: 'weekly', label: '每周提醒' },
-                { value: 'monthly', label: '每月提醒' }
+                { value: 'monthly', label: '每月提醒' },
               ]}
             />
           </div>
@@ -260,7 +269,12 @@ const Notes = () => {
               showTime
               style={{ width: '100%' }}
               placeholder="选择提醒时间"
-              onChange={value => setNewReminder(prev => ({ ...prev, datetime: value?.valueOf() }))}
+              onChange={(value) =>
+                setNewReminder((prev) => ({
+                  ...prev,
+                  datetime: value?.valueOf(),
+                }))
+              }
             />
           </div>
         </div>
